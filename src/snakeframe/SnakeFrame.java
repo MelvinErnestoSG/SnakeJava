@@ -20,15 +20,15 @@ public class SnakeFrame extends JFrame
 	{
 		/*this.setUndecorated(true); 
 		getRootPane().setWindowDecorationStyle(JRootPane.NONE);*/
-        this.add(lobbyPanel);
-        this.setTitle("Java Snakey"); 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.pack();
-        this.setResizable(false);
-        this.setLocationRelativeTo(null);
-        this.setVisible(true);
+        	this.add(lobbyPanel);
+        	this.setTitle("Java Snakey"); 
+        	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        	this.pack();
+        	this.setResizable(false);
+        	this.setLocationRelativeTo(null);
+        	this.setVisible(true);
 		this.add(gamePanel);
-    }
+    	}
 	
 	public void SwitchToGamePanel()
 	{
