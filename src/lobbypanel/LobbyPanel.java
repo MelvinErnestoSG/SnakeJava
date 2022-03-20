@@ -17,11 +17,11 @@ import javax.swing.JPanel;
 
 public class LobbyPanel extends JPanel
 {
-	/**
-	 * Melvin Ernesto Santana Garcia
-	 */
-	private static final long serialVersionUID = 1L;
-	public static final String TITLE_MESSAGE = "Java Snake";
+    /**
+    * Melvin Ernesto Santana Garcia
+    */
+    private static final long serialVersionUID = 1L;
+    public static final String TITLE_MESSAGE = "Java Snake";
     public static final String CREATOR_MESSAGE = "Created by @Melvin Ernesto Santana Garcia in 2022";
     public static final Font TITLE_FONT = new Font("Playball", 0 , 62);
     public static final Font MENU_FONT = new Font("Arial", 0 , 28);
@@ -30,17 +30,17 @@ public class LobbyPanel extends JPanel
     public static final int SCREEN_HEIGHT = GamePanel.SCREEN_HEIGHT;
     public static final String[] MENU_ITEMS = {"Play","Exit"};
     private int selectedMenuItem = 0;
-	SnakeFrame parentFrame;
+    SnakeFrame parentFrame;
 
     public LobbyPanel(JFrame frame)
     {
-		parentFrame = (SnakeFrame) frame;
+	parentFrame = (SnakeFrame) frame;
         this.addKeyListener((KeyListener) new MyKeyAdapter());
         this.setBackground(Color.black);
         this.setPreferredSize(new Dimension(SCREEN_WIDTH,SCREEN_HEIGHT));
         //Lo hacemos focusable para que tome teclas
         this.setFocusable(true);
-		this.requestFocus();
+	this.requestFocus();
     }
 
     public void paintComponent(Graphics g)
@@ -111,13 +111,15 @@ public class LobbyPanel extends JPanel
                     DecrementMenu();
                     repaint();
                     break;
+		    
                 case KeyEvent.VK_DOWN:
                     IncrementMenu();
                     repaint();
                     break;
+		    
                 case KeyEvent.VK_ENTER:
                     switchPanels();
-					break;
+		    break;
             }
         }
     }
