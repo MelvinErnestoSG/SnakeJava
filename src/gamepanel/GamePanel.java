@@ -24,7 +24,7 @@ import java.awt.event.KeyListener;
 public class GamePanel extends JPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
-	public static final int SCREEN_WIDTH = 600;
+    public static final int SCREEN_WIDTH = 600;
     public static final int SCREEN_HEIGHT = 600;
     public static final int UNIT_SIZE = 25;
     //Must be a square window.
@@ -41,25 +41,25 @@ public class GamePanel extends JPanel implements ActionListener
     private int[] snakeY = new int[GAME_UNITS];
     private int snakeSize;
     private int applesEaten;
-	SnakeFrame parentFrame;
+    SnakeFrame parentFrame;
     boolean keyInput = false;
-	String[] gameOverMessages = {"Genial otra ronda", 
-            					 "Excelente otra ronda", 
-            					 "Dale otra ronda", 
-            					 "Juega otra ronda", 
-            					 "Hora otra ronda", 
-            					 "Amigo otra ronda", 
-            					 "Quieres otra ronda", 
-            					 "Eso merece otra", 
-            					 "Vuelve para otra"};
-	String randomGameOverMessage = "";
+    String[] gameOverMessages = {"Genial otra ronda", 
+            			 "Excelente otra ronda", 
+            			  "Dale otra ronda", 
+            			  "Juega otra ronda", 
+            			  "Hora otra ronda", 
+            			  "Amigo otra ronda", 
+            			  "Quieres otra ronda", 
+            		          "Eso merece otra", 
+            			  "Vuelve para otra"};
+    String randomGameOverMessage = "";
    
-    public GamePanel(JFrame frame){
-		parentFrame = (SnakeFrame) frame;
-		
+    public GamePanel(JFrame frame)
+    {
+	parentFrame = (SnakeFrame) frame;
         //Si el panel no es focuseable, no va a escuchar las teclas
         this.setFocusable(true);
-		this.requestFocus();
+	this.requestFocus();
         this.addKeyListener((KeyListener) new MyKeyAdapter());
         this.setPreferredSize(new Dimension(SCREEN_WIDTH,SCREEN_HEIGHT));
         this.setBackground(Color.black);
@@ -67,10 +67,12 @@ public class GamePanel extends JPanel implements ActionListener
         //In this case, timer activates this class every quarter of a second.
     }
 	
-    public void startGame(){
+    public void startGame()
+    {
         snakeSize = INITIAL_SNAKE_SIZE;
         applesEaten = 0;
-        for(int i = 0; i < snakeSize; i++){
+        for(int i = 0; i < snakeSize; i++)
+	{
             snakeX[i] = 0;
             snakeY[i] = 0;
         }
@@ -78,17 +80,19 @@ public class GamePanel extends JPanel implements ActionListener
         timer.start();
         newApple();
         System.out.println("Initialized game panel startGame()");
-		randomGameOverMessage = gameOverMessages[random(gameOverMessages.length)];
+	randomGameOverMessage = gameOverMessages[random(gameOverMessages.length)];
     }
 	
-    public void actionPerformed(ActionEvent ev){
+    public void actionPerformed(ActionEvent e)
+    {
         move();
         checkCollision();
         eatApple();
         repaint();
     }
 
-    public void paintComponent(Graphics g){
+    public void paintComponent(Graphics g)
+    {
         super.paintComponent(g); 
         /*
         //Drawing a grid
@@ -108,8 +112,9 @@ public class GamePanel extends JPanel implements ActionListener
         g.fillRect(snakeX[0], snakeY[0], UNIT_SIZE, UNIT_SIZE);
         
         //snake Body
-        for(int i = 1; i < snakeSize; i++){
-        	g.setColor(new Color(45,180,0));
+        for(int i = 1; i < snakeSize; i++)
+	{
+            g.setColor(new Color(45,180,0));
             g.fillRect(snakeX[i], snakeY[i], UNIT_SIZE, UNIT_SIZE);
         }
 
@@ -121,7 +126,8 @@ public class GamePanel extends JPanel implements ActionListener
         int fontY = fontSize.getHeight();
         g.drawString("Puntaje: " + applesEaten, fontX, fontY);
         
-        if(!timer.isRunning()){
+        if(!timer.isRunning())
+	{
             //print game over screen
             g.setColor(Color.white);
             g.setFont(new Font("MS Gothic", Font.PLAIN, 58));
@@ -150,7 +156,8 @@ public class GamePanel extends JPanel implements ActionListener
         boolean newApplePermission = true;
         for(int i = 0; i < snakeSize; i++){
             snakePos.setLocation(snakeX[i], snakeY[i]);
-            if(provisional.equals(snakePos)){
+            if(provisional.equals(snakePos))
+	    {
                 newApplePermission = false;
             }
         }
@@ -158,10 +165,13 @@ public class GamePanel extends JPanel implements ActionListener
         System.out.println(provisional);
         System.out.println(newApplePermission);
         
-        if(newApplePermission){
+        if(newApplePermission)
+	{
             appleX = x;
             appleY = y;
-        }else{
+        }
+	else
+	{
             newApple();
         }
     }
@@ -224,17 +234,16 @@ public class GamePanel extends JPanel implements ActionListener
 	{
 	    JOptionPane.showMessageDialog(null, "Game Over");
 	    System.out.println("Game Over");
-        timer.stop();
-    }
+            timer.stop();
+        }
 	
 	public void YouWin()
 	{
-		if(applesEaten >= 5) 
-		{ 
-    		JOptionPane.showMessageDialog(null, "You Win");
-    		System.out.println("You Win");
-    		timer.stop();
-    	}
+		if(applesEaten >= 5) { 
+    			JOptionPane.showMessageDialog(null, "You Win");
+    			System.out.println("You Win");
+    			timer.stop();
+    	       }
 	}
 
     public int random(int range){
